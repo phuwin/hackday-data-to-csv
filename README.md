@@ -23,5 +23,7 @@ Clone the repo with
 Install dependancies with
 `npm install`
 
+Create a `.env` file from `.env-example`. Fill the info up too.
+
 Run the program on watch mode with
 `npm run dev`
