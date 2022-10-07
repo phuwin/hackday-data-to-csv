@@ -53,7 +53,7 @@ const getArticles = async (headers: {
       const {title, created} = attributes;
       const {field_tags} = relationships;
       const tags = field_tags.data.map(tag => tag.id);
-      const timestamp = +new Date(created);
+      const timestamp = +new Date(created) / 1000;
       articles.push({
         id,
         summary: title,
@@ -61,6 +61,8 @@ const getArticles = async (headers: {
         timestamp,
       });
     });
+    console.log(`Fetched ${articles.length} articles`);
+    // if (articles.length > 220) break;
     url = data.links?.next?.href || '';
   }
   return articles;
