@@ -1,5 +1,5 @@
 # hackday-data-to-csv
-Fetch data from json api and convert the data to csv format
+Fetch data from json api and convert the data to csv format. The csv is then imported to AWS Personalize as item data
 
 ```csv
 ITEM_ID,TAGS,SUMMARY,CREATION_TIMESTAMP
