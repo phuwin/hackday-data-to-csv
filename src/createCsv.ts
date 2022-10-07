@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 type Headers = string[];
-type Data = string[][];
+type Data = (string | number)[][];
 
 const createCsv = (headers: Headers, data: Data, filename: string) => {
   const filepath = path.join(process.cwd(), filename);
