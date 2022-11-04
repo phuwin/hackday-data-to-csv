@@ -12,4 +12,14 @@ const createCsv = (headers: Headers, data: Data, filename: string) => {
   stream.end();
 };
 
+export const appendCsv = (headers: Headers, data: Data, filename: string) => {
+  const filepath = path.join(process.cwd(), filename);
+  // check if file exists
+  if (!fs.existsSync(filepath)) {
+    fs.appendFileSync(filepath, `${headers.join(',')}\n`);
+  } else {
+    fs.appendFileSync(filepath, `${data.join(',')}\n`);
+  }
+};
+
 export default createCsv;
