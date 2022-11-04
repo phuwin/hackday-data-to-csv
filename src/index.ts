@@ -8,7 +8,13 @@ import getAuthHeaders from './getAuthHeaders';
 const main = async () => {
   try {
     const headers = await getAuthHeaders();
+    let index = 0;
     getArticles(headers, articles => {
+      appendCsv(
+        ['USER_ID', 'ITEM_ID', 'TIMESTAMP'],
+        [...articles.map(article => [index, article.id, new Date().getTime()])],
+        'user_interactions.csv'
+      );
       appendCsv(
         ['ITEM_ID', 'TAGS', 'SUMMARY', 'CREATION_TIMESTAMP'],
         [
@@ -21,9 +27,9 @@ const main = async () => {
         ],
         'articles.csv'
       );
+      index++;
+      console.log('index', index);
     });
-
-    console.log('done');
   } catch (err) {
     console.error(err);
   }

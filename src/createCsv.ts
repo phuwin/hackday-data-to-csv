@@ -18,7 +18,8 @@ export const appendCsv = (headers: Headers, data: Data, filename: string) => {
   if (!fs.existsSync(filepath)) {
     fs.appendFileSync(filepath, `${headers.join(',')}\n`);
   } else {
-    fs.appendFileSync(filepath, `${data.join(',')}\n`);
+    const appendString = data.map(item => `${item.join(',')}\n`).join('');
+    fs.appendFileSync(filepath, appendString);
   }
 };
 
